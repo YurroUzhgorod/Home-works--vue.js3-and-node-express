@@ -1,17 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <price-summator />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PriceSummator from "./components/PriceSummator";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PriceSummator,
+  },
+};
 </script>
 
 <style>

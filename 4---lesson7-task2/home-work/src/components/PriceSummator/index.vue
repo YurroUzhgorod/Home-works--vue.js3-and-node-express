@@ -3,16 +3,18 @@
     <product-price-editor
       product-name="Phone"
       v-model:product-price="productOnePrice"
+      v-model:product-count="productOneCount"
+      v-model:product-tax="productOneTax"
     />
     <product-price-editor
       product-name="Bicycle"
       v-model:product-price="productTwoPrice"
+      v-model:product-count="productTwoCount"
+      v-model:product-tax="productTwoTax"
     />
     <div class="result_block">
       Total:
-      <span
-        v-if="this.productOnePrice !== null && this.productTwoPrice !== null"
-      >
+      <span>
         {{ totalSum }}
       </span>
     </div>
@@ -28,14 +30,27 @@ export default {
   },
   data() {
     return {
-      productOnePrice: null,
-      productTwoPrice: null,
+      productOnePrice: 0,
+      productOneCount: 1,
+      productOneTax: 0,
+      productTwoPrice: 0,
+      productTwoCount: 1,
+      productTwoTax: 0,
     };
   },
   computed: {
     totalSum() {
       return (
-        parseFloat(this.productOnePrice) + parseFloat(this.productTwoPrice)
+        parseFloat(this.productOnePrice) * parseFloat(this.productOneCount) +
+        (parseFloat(this.productOnePrice) *
+          parseFloat(this.productOneCount) *
+          parseFloat(this.productOneTax)) /
+          100 +
+        parseFloat(this.productTwoPrice) * parseFloat(this.productTwoCount) +
+        (parseFloat(this.productTwoPrice) *
+          parseFloat(this.productTwoCount) *
+          parseFloat(this.productTwoTax)) /
+          100
       );
     },
   },

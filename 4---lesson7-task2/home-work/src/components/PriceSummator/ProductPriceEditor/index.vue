@@ -7,6 +7,20 @@
         @input="$emit('update:productPrice', $event.target.value)"
       />
     </label>
+    <label>
+      product count
+      <input
+        type="number"
+        @input="$emit('update:productCount', $event.target.value)"
+      />
+    </label>
+    <label>
+      tax
+      <input
+        type="number"
+        @input="$emit('update:productTax', $event.target.value)"
+      />
+    </label>
   </div>
 </template>
 
@@ -22,6 +36,14 @@ export default {
       type: Number,
       default: null,
     },
+    productCount: {
+      type: Number,
+      default: null,
+    },
+    productTax: {
+      type: Number,
+      default: null,
+    },
   },
 };
 </script>
@@ -30,6 +52,6 @@ export default {
 .container {
   margin: 10px;
 
-  display: inline;
+  display: flex;
 }
 </style>

@@ -15,7 +15,7 @@ const store = createStore({
   },
   //Розділ, де описуємо функції, які мають право робити зміни у стейті
   mutations: {
-    SetNewUserInUserList(state, userData) {
+    setNewUserInUserList(state, userData) {
       //Створюємо новий об"єкт-товар
       const user = {
         id: uuidv4(),
@@ -23,12 +23,12 @@ const store = createStore({
       };
       state.usersList.push(user); //Додаємо новий об"єкт-товар у список
     },
-    SetUsersListWithoutDeletedUser(state, idToDelete) {
+    setUsersListWithoutDeletedUser(state, idToDelete) {
       state.usersList = state.usersList.filter(
         (item) => item.id !== idToDelete
       );
     },
-    SetNewUsersData(state, user) {
+    setNewUsersData(state, user) {
       const userIndex = state.usersList.findIndex(
         (item) => item.id === user.id
       );

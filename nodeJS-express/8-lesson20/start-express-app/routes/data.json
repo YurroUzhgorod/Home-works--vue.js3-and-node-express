@@ -1,0 +1,51 @@
+{
+  "goals": [
+    {
+      "id": "1",
+      "title": "ended IT-courses"
+    },
+    {
+      "id": "2",
+      "title": "create web-site"
+    },
+    {
+      "id": "3",
+      "title": "find a job in IT-industry"
+    }
+  ],
+
+  "webSites": [
+    {
+      "id": "1",
+      "title": "metanit",
+      "url": "https://metanit.com/web/nodejs/4.2.php"
+    },
+    {
+      "id": "2",
+      "title": "metanit---2222",
+      "url": "https://metanit.com/web/nodejs/4.2.php"
+    },
+    {
+      "id": "3",
+      "title": "metanit---333",
+      "url": "https://metanit.com/web/nodejs/4.2.php"
+    }
+  ],
+  "cinemas": [
+    {
+      "id": "1",
+      "title": "cinemas---111",
+      "url": "https://metanit.com/web/nodejs/4.2.php"
+    },
+    {
+      "id": "2",
+      "title": "cinemas---2222",
+      "url": "https://metanit.com/web/nodejs/4.2.php"
+    },
+    {
+      "id": "3",
+      "title": "cinemas---333",
+      "url": "https://metanit.com/web/nodejs/4.2.php"
+    }
+  ]
+}

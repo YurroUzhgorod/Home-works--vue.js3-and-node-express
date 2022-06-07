@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header><a href="/">back to home</a><br /></header>
+    <main>
+      <br />
+      <div><%-include('links.ejs')%></div>
+      <hr />
+
+      <h1><%= title %></h1>
+      <ul>
+        <% for(goal of goals){%>
+        <li><%= goal.title %></li>
+        <%}%>
+      </ul>
+    </main>
+  </body>
+</html>

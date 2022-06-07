@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/">back to home</a>
+    </header>
+    <div><%-include('links.ejs')%></div>
+    <hr />
+    <h1><%= title %></h1>
+    <ul>
+      <% for(item of webSites){%>
+      <li><%= item.title %> - <%= item.url %></li>
+      <%}%>
+    </ul>
+  </body>
+</html>

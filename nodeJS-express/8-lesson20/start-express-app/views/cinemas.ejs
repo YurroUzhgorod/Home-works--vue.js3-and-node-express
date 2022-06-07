@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/">back to home</a>
+    </header>
+    <h1><%= title %></h1>
+    <ul>
+      <% for(item of cinemas){%>
+      <li><%= item.title %> - <%= item.url %></li>
+      <%}%>
+    </ul>
+  </body>
+</html>

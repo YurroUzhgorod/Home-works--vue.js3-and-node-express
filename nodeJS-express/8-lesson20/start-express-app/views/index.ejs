@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/goals"> цілі </a>
+      <br />
+    </header>
+
+    <main>
+      <br />
+      <div><%-include('links.ejs')%></div>
+      <hr />
+
+      <h1><%= title %> <%= name %></h1>
+      <p>Welcome to <%= title %> page</p>
+    </main>
+  </body>
+</html>

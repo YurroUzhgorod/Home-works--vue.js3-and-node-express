@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script>
+      //Функція для видалення книги
+      function deleteBook(btn) {
+        //Зчитуємо значення id з кнопки
+        //попередньо ми туди записали під час рендерингу id книги
+        const id = btn.getAttribute('id')
+
+        //Створюємо об"єкт запиту
+        let request = new XMLHttpRequest()
+        request.open('DELETE', '/books', true)
+        request.setRequestHeader('Content-Type', 'application/json')
+        //Встановлюємо обробкник виконання запиту(коли прийде відповідь)
+        request.addEventListener('load', function (e) {
+          //Якщо прийшов об"єкт у відповіді з полем ({"success":true}) (його надсилаємо, якщо успішно видалено)
+          if (JSON.parse(e.currentTarget.response).success)
+            //Перезавантажуємо сторінку
+            document.location.reload()
+        })
+        //Надсилаємо запит. У тілі надсилаємо об"єкт з властивістю, що містить id книги, що треба видалити
+        request.send(JSON.stringify({ id }))
+      }
+
+      function searchBook() {
+        //Зчитуємо значення з поля пошуку
+        const searchTitle = document.getElementById('searchTitle').value
+
+        if (searchTitle) {
+          //Якщо значення поля задано, то формуємо запит
+          let request = new XMLHttpRequest()
+          request.open('GET', `/books?searchTitle=${searchTitle}`, true)
+
+          //Додаємо обробник виконання запиту (коли прийде відповідь)
+          request.addEventListener('load', function (e) {
+            alert('ok')
+            //Замінюємо вмсіт елемента, де відображаються книги
+            document.getElementById('booksList').innerHTML =
+              e.currentTarget.response
+          })
+          //Надсилаємо запит
+          request.send()
+        } else {
+          //Якщо поле пошуку порожнє, то перезвантаємо сторінку
+          document.location.reload()
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div><%-include('header.ejs')%></div>
+    <p>Welcome to <%= title %></p>
+    <div>
+      <label>
+        Book tittle:
+        <input id="searchTitle" type="text" placeholder="Type book title" />
+        <button onclick="searchBook(this)">Search</button>
+      </label>
+    </div>
+    <h1>Books list</h1>
+    <div id="booksList"><%-include('booksListOnly',{books})%></div>
+  </body>
+</html>

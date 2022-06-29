@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script>
+      function deleteBook(btn) {
+        const id = btn.getAttribute('id')
+        console.log('deleteBook===========')
+        let request = new XMLHttpRequest()
+        request.open('DELETE', '/books', true)
+        request.setRequestHeader('Content-Type', 'application/json')
+        request.addEventListener('load', function (e) {
+          console.log('e====')
+          console.log(e)
+          console.log(e.currentTarget.response)
+          alert('ok')
+
+          document.location.reload()
+        })
+
+        request.send(JSON.stringify({ id }))
+      }
+
+      function searchBook() {
+        const searchTitle = document.getElementById('searchTitle').value
+        console.log('searchTitle')
+        console.log(searchTitle)
+        if (searchTitle) {
+          let request = new XMLHttpRequest()
+          request.open('GET', `/books?searchTitle=${searchTitle}`, true)
+
+          request.addEventListener('load', function (e) {
+            alert('ok')
+            console.log(e)
+            document.getElementById('booksList').innerHTML =
+              e.currentTarget.response
+            // document.location.reload()
+            // document=
+          })
+
+          request.send()
+        } else document.location.reload()
+      }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div><%-include('header.ejs')%></div>
+    <p>Welcome to <%= title %></p>
+    <div>
+      <label>
+        Book tittle:
+        <input id="searchTitle" type="text" placeholder="Type book ttitle" />
+        <button onclick="searchBook(this)">Search</button>
+      </label>
+    </div>
+    <h1>Books list</h1>
+    <div id="booksList"><%-include('booksListOnly',{books})%></div>
+  </body>
+</html>

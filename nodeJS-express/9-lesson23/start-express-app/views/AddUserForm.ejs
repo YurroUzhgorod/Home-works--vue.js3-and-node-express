@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <script>
+    function AddUserPhoto(input) {
+      let file = input.files[0];
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        document.querySelector("img").setAttribute("src", e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+  <body>
+    <h1><%= title %></h1>
+
+    <hr />
+    <form action="/users/add" enctype="multipart/form-data" method="post">
+      <label>
+        Name
+        <input type="text" name="userName" />
+      </label>
+      <br />
+      <label>
+        Age
+        <input type="number" name="userAge" />
+      </label>
+      <br />
+      <label>
+        Add photo
+        <input type="file" name="userPhoto" onchange="AddUserPhoto(this)" />
+      </label>
+      <br />
+      <img src="" alt="" width="100" />
+      <br />
+      <input type="submit" value="add user" />
+    </form>
+  </body>
+</html>

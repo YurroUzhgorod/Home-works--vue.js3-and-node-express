@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script>
+      function deleteBook(btn) {
+        const id = btn.getAttribute('id')
+        console.log('deleteBook===========')
+        let request = new XMLHttpRequest()
+        request.open('DELETE', '/books', true)
+        request.setRequestHeader('Content-Type', 'application/json')
+        request.addEventListener('load', function () {
+          alert('ok')
+          document.location.reload()
+        })
+
+        request.send(JSON.stringify({ id }))
+      }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div><%-include('header.ejs')%></div>
+    <p>Welcome to <%= title %></p>
+    <div>
+      <label>
+        Book tittle:
+        <input id="searchTitle" type="text" placeholder="Type book ttitle" />
+        <button>Search</button>
+      </label>
+    </div>
+    <h1>Books list</h1>
+    <%for(book of books){%>
+    <p>
+      <a href="/books/<%=book._id%>"><%=book.title%></a>
+      <img src="<%=book.photo%>" width="50" alt="" />
+
+      <button id="<%=book._id%>" onclick="deleteBook(this)">Delete</button>
+      <a href="/books/edit-form/<%=book._id%>">Edit</a>
+    </p>
+    <%}%>
+  </body>
+</html>

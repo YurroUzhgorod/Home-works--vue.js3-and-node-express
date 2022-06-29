@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script></script>
+  </head>
+  <body>
+    <%- include('links.ejs') %>
+    <hr />
+    <% for(user of usersList){%>
+    <li>
+      <a href="/udser/<%=user.id%>"> <%= user.name %> </a>
+      - <%= user.age %> -
+      <img src="<%=user.photo %>" width="50" alt="" />
+    </li>
+
+    <%}%>
+  </body>
+</html>

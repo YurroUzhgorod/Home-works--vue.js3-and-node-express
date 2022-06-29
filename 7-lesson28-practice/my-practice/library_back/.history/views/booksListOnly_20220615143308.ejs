@@ -1,0 +1,9 @@
+<%for(book of books){%>
+<p>
+  <a href="/books/<%=book._id%>"><%=book.title%></a>
+  <img src="<%=book.photo%>" width="50" alt="" />
+
+  <button id="<%=book._id%>" onclick="deleteBook(this)">Delete</button>
+  <a href="/books/edit-form/<%=book._id%>">Edit</a>
+</p>
+<%}%>

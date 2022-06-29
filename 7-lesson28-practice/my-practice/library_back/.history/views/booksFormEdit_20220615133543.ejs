@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script>
+      function createLogoImage(input) {
+        let file = input.files[0]
+        let reader = new FileReader()
+        reader.onload = (e) => {
+          document.getElementById('img').setAttribute('src', e.target.result)
+        }
+        reader.readAsDataURL(file)
+      }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/books/edit" enctype="multipart/form-data" method="POST">
+      <input type="hidden" value="<%=book._id%>" name="id" />
+      <div>
+        <label>
+          Title
+          <input type="text" value="<%=book.title%>" name="title" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Price
+          <input type="number" value="<%=book.price%>" name="price" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Photo
+          <input
+            type="file"
+            value="<%=book.photo%>"
+            name="photo"
+            onchange="createLogoImage(this)"
+          />
+        </label>
+        <img id="img" src="<%=book.photo%>" alt="" />
+      </div>
+      <input type="submit" value="Change" />
+    </form>
+  </body>
+</html>
